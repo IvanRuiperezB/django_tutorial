@@ -1,0 +1,17 @@
+version: '2.2'
+services:
+  app:
+    container_name: contenedor_python
+    image: ivanruiperezbe/dj_tutorial:1
+    restart: always
+    environment:
+      DJ_USER: ${DJ_USER}
+      DJ_PASSWORD: ${DJ_PASSWORD}
+      DJ_EMAIL: ${DJ_EMAIL}
+      URL: ${URL}
+    ports:
+      - ${PORT}:3000
+    volumes:
+      - django_tutorial:/var/lib/mysql
+volumes:
+    django_tutorial1:
