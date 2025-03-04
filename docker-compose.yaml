@@ -2,7 +2,7 @@ version: '2.2'
 services:
   app:
     container_name: contenedor_python
-    image: ivanruiperezbe/publicaciones:1
+    image: prueba:1
     restart: always
     environment:
       NAME: ${NAME}
