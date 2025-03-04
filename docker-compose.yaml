@@ -2,16 +2,31 @@ version: '2.2'
 services:
   app:
     container_name: contenedor_python
-    image: ivanruiperezbe/dj_tutorial:1
+    image: ivanruiperezbe/publicaciones:1
     restart: always
     environment:
+      NAME: ${NAME}
+      USER: ${USER}
+      PASSWORD: ${PASS}
+      HOST: basededatos
       DJ_USER: ${DJ_USER}
       DJ_PASSWORD: ${DJ_PASSWORD}
       DJ_EMAIL: ${DJ_EMAIL}
       URL: ${URL}
     ports:
       - ${PORT}:3000
+    depends_on:
+      - db
+  db:
+    container_name: basededatos
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${NAME}
+      MYSQL_USER: ${USER}
+      MYSQL_PASSWORD: ${PASS}
+      MYSQL_ROOT_PASSWORD: ${ROOT}
     volumes:
-      - django_tutorial:/var/lib/mysql
+      - mariadb_data1:/var/lib/mysql
 volumes:
-    django_tutorial1:
+    mariadb_data1:
