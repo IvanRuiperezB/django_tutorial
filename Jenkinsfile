@@ -15,7 +15,7 @@ pipeline {
             stages {
                 stage('Clonar_repo') {
                     steps {
-                        git branch:'main',url:'https://github.com/javierasping/django_tutorial_docker.git'
+                        git branch:'main',url:'https://github.com/IvanRuiperezB/django_tutorial.git'
                     }
                 }
                 stage('Instalar_requeriments') {
