@@ -20,13 +20,13 @@ pipeline {
                 }
                 stage('Instalar_requeriments') {
                     steps {
-                        sh 'pip install -r django_tutorial/requirements_test.txt'
+                        sh 'pip install -r app/requirements_test.txt'
                     }
                 }
                 stage('Test')
                 {
                     steps {
-                        sh 'cd django_tutorial && python manage.py test --settings=django_tutorial.desarollo'
+                        sh 'cd app && python manage.py test --settings=django_tutorial.desarrollo'
                     }
                 }
 
@@ -58,21 +58,10 @@ pipeline {
                 }
             }
         }
-        stage('SSH') {
-            agent any
-            steps {
-                sshagent(credentials: ['NEW_KEY']) {
-		    sh 'ssh -o StrictHostKeyChecking=no javiercruces@atlas.javiercd.es docker system prune -f'
-                    sh 'ssh -o StrictHostKeyChecking=no javiercruces@atlas.javiercd.es docker image rm -f javierasping/django_tutorial_ic:latest'
-                    sh 'ssh -o StrictHostKeyChecking=no javiercruces@atlas.javiercd.es wget https://raw.githubusercontent.com/javierasping/django_tutorial_docker/main/docker-compose.yaml -O docker-compose.yaml'
-                    sh 'ssh -o StrictHostKeyChecking=no javiercruces@atlas.javiercd.es docker-compose up -d --force-recreate'
-                }
-            }
-        }
     }
     post {
         always {
-            mail to: 'javierasping@gmail.com',
+            mail to: 'ivanruiperez.instituto@gmail.com',
             subject: "Pipeline IC: ${currentBuild.fullDisplayName}",
             body: "${env.BUILD_URL} has result ${currentBuild.result}"
         }
