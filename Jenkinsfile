@@ -13,12 +13,12 @@ pipeline {
                 }
             }
             stages {
-                stage('Clonar_repo') {
+                stage('Repositorio') {
                     steps {
                         git branch:'main',url:'https://github.com/IvanRuiperezB/django_tutorial.git'
                     }
                 }
-                stage('Instalar_requeriments') {
+                stage('Requirements') {
                     steps {
                         sh 'pip install -r app/requirements_test.txt'
                     }
@@ -32,17 +32,17 @@ pipeline {
 
             }
         }
-        stage("Generar_imagen") {
+        stage("Gen_imagen") {
             agent any
             stages {
-                stage('Construir_imagen') {
+                stage('build') {
                     steps {
                         script {
                             newApp = docker.build "$IMAGEN:latest"
                         }
                     }
                 }
-                stage('Subir_imagen') {
+                stage('Subir') {
                     steps {
                         script {
                             docker.withRegistry( '', LOGIN ) {
@@ -51,7 +51,7 @@ pipeline {
                         }
                     }
                 }
-                stage('Borrar_imagen') {
+                stage('Borrar') {
                     steps {
                         sh "docker rmi $IMAGEN:latest"
                     }
