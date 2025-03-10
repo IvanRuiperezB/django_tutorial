@@ -124,4 +124,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
-CSRF_TRUSTED_ORIGINS = [os.environ['URL']]
