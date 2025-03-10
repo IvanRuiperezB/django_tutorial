@@ -15,7 +15,7 @@ pipeline {
             stages {
                 stage('Repositorio') {
                     steps {
-                        git branch:'main',url:'https://github.com/IvanRuiperezB/django_tutorial.git'
+                        git branch:'master',url:'https://github.com/IvanRuiperezB/django_tutorial.git'
                     }
                 }
                 stage('Requirements') {
