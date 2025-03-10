@@ -65,11 +65,8 @@ pipeline {
                 sh '''
                 ssh -o StrictHostKeyChecking=no debian@caladan.ivanvan.es << 'EOF'
                     cd ~/jenkins || exit
-
                     docker-compose down
-
-                    docker rmi -f ivanruiperezbe/django_tutorial_ic:latest
-
+                    docker rmi -f ivanruiperezbe/django_icdc:latest
                     docker-compose up -d --force-recreate
                 EOF
                 '''
