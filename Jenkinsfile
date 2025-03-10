@@ -18,7 +18,7 @@ pipeline {
                         git branch:'master',url:'https://github.com/IvanRuiperezB/django_tutorial.git'
                     }
                 }
-                stage('Requirement') {
+                stage('Requirements') {
                     steps {
                         sh 'pip install -r app/requirements.txt'
                     }
