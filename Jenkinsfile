@@ -59,6 +59,24 @@ pipeline {
             }
         }
     }
+    stage('VPS') {
+    agent any
+    steps {
+        sshagent(credentials: ['SSH']) {
+            sh '''
+            ssh -o StrictHostKeyChecking=no debian@caladan.ivanvan.es << 'EOF'
+                cd ~/proyecto || exit
+                
+                docker-compose down
+                
+                docker rmi -f ivanruiperezbe/django_tutorial_ic:latest
+                
+                docker-compose up -d --force-recreate
+            EOF
+            '''
+            }
+        }
+    }
     post {
         always {
             mail to: 'ivanruiperez.instituto@gmail.com',
