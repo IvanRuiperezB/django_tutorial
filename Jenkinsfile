@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        IMAGEN = "ivanruiperezb/django_icdc"
+        IMAGEN = "ivanruiperezbe/django_icdc"
         LOGIN = 'DOCKER_HUB_IVANR'
     }
     agent any
