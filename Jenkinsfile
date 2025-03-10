@@ -63,16 +63,16 @@ pipeline {
         steps {
             sshagent(credentials: ['SSH']) {
                 sh '''
-                ssh -o StrictHostKeyChecking=no debian@caladan.ivanvan.es << EOF
+                ssh -o StrictHostKeyChecking=no debian@caladan.ivanvan.es <<EOF
                     cd ~/jenkins || exit
                     docker-compose down
                     docker rmi -f ivanruiperezbe/django_icdc:latest
                     docker-compose up -d --force-recreate
                 EOF
                 '''
-                }
             }
         }
+    }
     }
     post {
         always {
