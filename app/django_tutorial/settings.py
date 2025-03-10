@@ -26,7 +26,7 @@ SECRET_KEY = '9f0h)gozf$g%6igo8&767w1xro0adm+)msxe)!eic$!fhvynb8'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = [ 'http://*.ivanvan.es', 'http://*.127.0.0.1', 'https://*.ivanvan.es', 'https://*.127.0.0.1' ]
 
 # Application definition
 
