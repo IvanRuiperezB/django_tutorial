@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM python:3.12.1-bookworm
 WORKDIR /usr/share/app
-COPY ap .
+COPY app .
 ENV NAME = django
 ENV USER = django
 ENV PASSWORD = django
