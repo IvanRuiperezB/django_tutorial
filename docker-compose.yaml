@@ -1,14 +1,14 @@
 version: '2.2'
 services:
   app:
-    container_name: contenedor_python
-    image: prueba:1
+    container_name: contenedor_jenkins
+    image: ivanruiperezbe/django_icdc:latest
     restart: always
     environment:
       NAME: ${NAME}
       USER: ${USER}
       PASSWORD: ${PASS}
-      HOST: basededatos
+      HOST: basededatos3
       DJ_USER: ${DJ_USER}
       DJ_PASSWORD: ${DJ_PASSWORD}
       DJ_EMAIL: ${DJ_EMAIL}
@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
   db:
-    container_name: basededatos
+    container_name: basededatos3
     image: mariadb
     restart: always
     environment:
@@ -27,6 +27,6 @@ services:
       MYSQL_PASSWORD: ${PASS}
       MYSQL_ROOT_PASSWORD: ${ROOT}
     volumes:
-      - mariadb_data1:/var/lib/mysql
+      - mariadb_data3:/var/lib/mysql
 volumes:
-    mariadb_data1:
+    mariadb_data3:
