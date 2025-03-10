@@ -68,7 +68,6 @@ pipeline {
                     docker-compose down
                     docker rmi -f ivanruiperezbe/django_icdc:latest
                     docker-compose up -d --force-recreate
-                EOF
                 '''
             }
         }
