@@ -64,7 +64,7 @@ pipeline {
             sshagent(credentials: ['SSH']) {
                 sh '''
                 ssh -o StrictHostKeyChecking=no debian@caladan.ivanvan.es << 'EOF'
-                    cd ~/proyecto || exit
+                    cd ~/jenkins || exit
 
                     docker-compose down
 
